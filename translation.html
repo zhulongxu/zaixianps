@@ -269,6 +269,7 @@
                 border-radius: 20px;
                 box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
                 overflow: hidden;
+                margin-top: 10px;
             }
 
             .header {
@@ -700,48 +701,175 @@
                     grid-template-columns: 1fr;
                 }
             }
+
+            /* prettier language toggle */
+            .language-toggle {
+                position: absolute;
+                bottom: 40vh;
+                right: 18px;
+                z-index: 1001;
+                font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            .language-toggle button {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 8px 14px;
+                border-radius: 999px;
+                border: none;
+                cursor: pointer;
+                color: #fff;
+                background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                box-shadow: 0 8px 20px rgba(102,126,234,0.18);
+                font-weight: 600;
+                font-size: 14px;
+                transition: transform .15s ease, box-shadow .15s ease, opacity .12s ease;
+            }
+
+            .language-toggle button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 14px 30px rgba(102,126,234,0.22);
+            }
+
+            .language-toggle .flag {
+                width: 18px;
+                height: 12px;
+                border-radius: 2px;
+                flex: 0 0 auto;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.12) inset;
+            }
+
+            .language-toggle .label {
+                white-space: nowrap;
+            }
+
+            /* small state indicator */
+            .language-toggle .pill {
+                background: rgba(255,255,255,0.12);
+                padding: 4px 6px;
+                border-radius: 8px;
+                font-size: 12px;
+                color: rgba(255,255,255,0.95);
+            }
+
+            /* when english active */
+            body.lang-en .language-toggle button {
+                background: linear-gradient(90deg, #22c1c3 0%, #4ca1af 100%);
+                box-shadow: 0 8px 20px rgba(34,193,195,0.16);
+            }
+
+            /* ensure focus accessibility */
+            .language-toggle button:focus {
+                outline: 3px solid rgba(102,126,234,0.18);
+                outline-offset: 3px;
+            }
         </style>
     </head>
 
     <body>
-        <!-- 顶部导航 -->
-        <nav class="site-navigation">
-            <div class="nav-container">
-                <a href="/" class="nav-logo">🎨 在线PS编辑器</a>
-                <ul class="nav-links">
-                    <li><a href="/">在线编辑</a></li>
-                    <li><a href="/zjz.html">证件照换底色</a></li>
-                    <li><a href="/translation.html" class="active">图片格式转换</a></li>
-                </ul>
-            </div>
-        </nav>
+        <!-- 添加一个中英文切换按钮 -->
+        <div class="language-toggle">
+            <button id="toggleLang" aria-label="切换语言 / Toggle language" type="button">
+                <span class="flag" id="langFlag" style="background: linear-gradient(90deg,#de2910 0%,#de2910 100%);"></span>
+                <span class="label" id="langLabel">中文</span>
+                <span class="pill" id="langState">切换</span>
+            </button>
+        </div>
+        <!-- 中文界面 -->
+        <div class="controle-zh">
+            <!-- 顶部导航 -->
+            <nav class="site-navigation">
+                <div class="nav-container">
+                    <a href="/" class="nav-logo">🎨 在线PS编辑器</a>
+                    <ul class="nav-links">
+                        <li><a href="/">在线编辑</a></li>
+                        <li><a href="/zjz.html">证件照换底色</a></li>
+                        <li><a href="/translation.html" class="active">图片格式转换</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="controle-en">
+            <!-- Top Navigation -->
+            <nav class="site-navigation">
+                <div class="nav-container">
+                    <a href="/" class="nav-logo">🎨 Online PS Editor</a>
+                    <ul class="nav-links">
+                        <li><a href="/">Online Edit</a></li>
+                        <li><a href="/zjz.html">ID Photo Background</a></li>
+                        <li><a href="/translation.html" class="active">Image Format Converter</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
 
         <!-- 面包屑导航 -->
-        <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <div class="breadcrumb-container">
-                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/"><span itemprop="name">首页</span></a>
-                    <meta itemprop="position" content="1" />
-                </span> >
-                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name">图片格式转换</span>
-                    <meta itemprop="position" content="2" />
-                </span>
-            </div>
-        </nav>
+        <div class="controle-zh">
+
+            <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <div class="breadcrumb-container">
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="/"><span itemprop="name">首页</span></a>
+                        <meta itemprop="position" content="1" />
+                    </span> >
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">图片格式转换</span>
+                        <meta itemprop="position" content="2" />
+                    </span>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Breadcrumb Navigation -->
+        <div class="controle-en">
+            <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <div class="breadcrumb-container">
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+                        <meta itemprop="position" content="1" />
+                    </span> >
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">Image Format Converter</span>
+                        <meta itemprop="position" content="2" />
+                    </span>
+                </div>
+            </nav>
+        </div>
 
         <div class="container">
-            <div class="header">
-                <h1>🔄 图像文件转换工具</h1>
-                <p>支持多种格式转换、尺寸调整和质量优化 - 专业、快速、免费</p>
+            <div class="controle-zh">
+                <div class="header">
+                    <h1>🔄 图像文件转换工具</h1>
+                    <p>支持多种格式转换、尺寸调整和质量优化 - 专业、快速、免费</p>
+                </div>
+            </div>
+            <!-- 英文版本 -->
+            <div class="controle-en">
+                <div class="header">
+                    <h1>🔄 Image File Converter</h1>
+                    <p>Supports multiple format conversions, size adjustments, and quality optimization - professional, fast, and free</p>
+                </div>
             </div>
 
             <div class="main-content">
                 <!-- 上传区域 -->
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-icon">🖼️</div>
-                    <h3>点击或拖拽上传图片</h3>
-                    <p>支持 JPG、PNG、GIF、BMP、WEBP 等格式，最大 10MB</p>
+
+                    <div class="controle-zh">
+                        <h3>点击或拖拽上传图片</h3>
+                        <p>支持 JPG、PNG、GIF、BMP、WEBP 等格式，最大 10MB</p>
+                    </div>
+                    <!-- 英文版本 -->
+                    <div class="controle-en">
+                        <h3>Click or Drag to Upload Image</h3>
+                        <p>Supports JPG, PNG, GIF, BMP, WEBP, etc. formats, up to 10MB</p>
+                    </div>
+
+
+
                     <input type="file" id="fileInput" accept="image/*" class="hidden">
                 </div>
 
@@ -749,13 +877,25 @@
                 <div class="workspace hidden" id="workspace">
                     <!-- 预览区域 -->
                     <div class="preview-section">
-                        <h3>📸 图片预览</h3>
+                        <div class="controle-zh">
+                            <h3>📸 图片预览</h3>
+                        </div>
+                        <!-- 英文版本 -->
+                        <div class="controle-en">
+                            <h3>📸 Image Preview</h3>
+                        </div>
                         <div class="preview-container">
                             <img id="previewImage" class="preview-image" alt="预览图片">
                             <canvas id="processCanvas" class="hidden"></canvas>
                             <div class="loading hidden" id="loading">
                                 <div class="spinner"></div>
-                                <p>正在处理中...</p>
+                                <div class="controle-zh">
+                                    <p>正在处理中...</p>
+                                </div>
+                                <!-- 英文版本 -->
+                                <div class="controle-en">
+                                    <p>Processing...</p>
+                                </div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" id="progressFill"></div>
                                 </div>
@@ -764,20 +904,53 @@
 
                         <!-- 图片信息 -->
                         <div class="info-display" id="imageInfo">
+
                             <div class="info-row">
-                                <span class="info-label">原始尺寸:</span>
+                                <span class="info-label">
+                                    <div class="controle-zh">
+                                        原始尺寸:
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <p>Original Size:</p>
+                                    </div>
+                                </span>
                                 <span class="info-value" id="originalSize">-</span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">文件大小:</span>
+                                <span class="info-label">
+                                    <div class="controle-zh">
+                                        文件大小:
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <p>File Size:</p>
+                                    </div>
+                                </span>
                                 <span class="info-value" id="fileSize">-</span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">输出尺寸:</span>
+                                <span class="info-label">
+                                    <div class="controle-zh">
+                                        输出尺寸:
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <p>Output Size:</p>
+                                    </div>
+                                </span>
                                 <span class="info-value" id="outputSize">-</span>
                             </div>
                             <div class="info-row">
-                                <span class="info-label">预计大小:</span>
+                                <span class="info-label">
+                                    <div class="controle-zh">
+                                        预计大小:
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <p>Estimated Size:</p>
+                                    </div>
+                                </span>
                                 <span class="info-value" id="estimatedSize">-</span>
                             </div>
                         </div>
@@ -787,7 +960,14 @@
                     <div class="settings-panel">
                         <!-- 输出格式 -->
                         <div class="setting-group">
-                            <h3>🎯 输出格式</h3>
+                            <div class="controle-zh">
+                                <h3>🎯 输出格式</h3>
+                            </div>
+                            <!-- 英文版本 -->
+                            <div class="controle-en">
+                                <h3>🎯 Output Format</h3>
+                            </div>
+
                             <div class="format-options">
                                 <div class="format-btn selected" data-format="png">PNG</div>
                                 <div class="format-btn" data-format="jpg">JPG</div>
@@ -802,21 +982,51 @@
                         <div class="setting-group">
                             <h3>📏 尺寸设置</h3>
                             <div class="size-presets">
-                                <div class="size-btn" data-size="original">保持原尺寸</div>
+                                <div class="size-btn" data-size="original">
+                                    <div class="controle-zh">
+                                        🎯 保持原尺寸
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        Keep Original Size
+                                    </div>
+
+                                </div>
                                 <div class="size-btn" data-size="16x16">16×16</div>
                                 <div class="size-btn" data-size="32x32">32×32</div>
                                 <div class="size-btn" data-size="64x64">64×64</div>
                                 <div class="size-btn" data-size="128x128">128×128</div>
-                                <div class="size-btn" data-size="custom">自定义</div>
+                                <div class="size-btn" data-size="custom">
+                                    <div class="controle-zh">
+                                        🎯 自定义
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        🎯 Custom
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="custom-size" id="customSizeInputs">
                                 <div class="input-group">
-                                    <label>宽度 (px)</label>
+                                    <div class="controle-zh">
+                                        <label>宽度 (px)</label>
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <label>Width (px)</label>
+                                    </div>
                                     <input type="number" id="customWidth" min="1" max="5000" value="300">
                                 </div>
                                 <div class="input-group">
-                                    <label>高度 (px)</label>
+                                    <div class="controle-zh">
+                                        <label>高度 (px)</label>
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        <label>Height (px)</label>
+                                    </div>
+
                                     <input type="number" id="customHeight" min="1" max="5000" value="300">
                                 </div>
                             </div>
@@ -824,16 +1034,38 @@
                             <div class="crop-area">
                                 <div class="crop-toggle">
                                     <input type="checkbox" id="maintainRatio" checked>
-                                    <label for="maintainRatio">保持宽高比</label>
+                                    <label for="maintainRatio">
+                                        <div class="controle-zh">
+                                            保持宽高比
+                                        </div>
+                                        <!-- 英文版本 -->
+                                        <div class="controle-en">
+                                            <label>Maintain Aspect Ratio</label>
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 质量设置 -->
                         <div class="setting-group">
-                            <h3>⚙️ 质量设置</h3>
+                            <div class="controle-zh">
+                                <h3>⚙️ 质量设置</h3>
+                            </div>
+                            <!-- 英文版本 -->
+                            <div class="controle-en">
+                                <h3>⚙️ Quality Settings</h3>
+                            </div>
                             <div class="quality-slider">
-                                <label>图片质量: <span id="qualityPercent">90%</span></label>
+                                <label>
+                                    <div class="controle-zh">
+                                        图片质量:
+                                    </div>
+                                    <!-- 英文版本 -->
+                                    <div class="controle-en">
+                                        Quality:
+                                    </div>
+                                    <span id="qualityPercent">90%</span></label>
                                 <div class="slider-container">
                                     <input type="range" id="qualitySlider" min="10" max="100" value="90">
                                     <div class="quality-value" id="qualityValue">90%</div>
@@ -843,8 +1075,24 @@
 
                         <!-- 操作按钮 -->
                         <div class="action-buttons">
-                            <button class="btn btn-primary" onclick="convertImage()">🔄 开始转换</button>
-                            <button class="btn btn-secondary" onclick="resetSettings()">🔄 重置设置</button>
+                            <button class="btn btn-primary" onclick="convertImage()">🔄 
+                                <div class="controle-zh">
+                                    开始转换
+                                </div>
+                                <!-- 英文版本 -->
+                                <div class="controle-en">
+                                    Start Conversion
+                                </div>
+                                </button>
+                            <button class="btn btn-secondary" onclick="resetSettings()">🔄 
+                                <div class="controle-zh">
+                                    重置设置
+                                </div>
+                                <!-- 英文版本 -->
+                                <div class="controle-en">
+                                    Reset Settings
+                                </div>
+                                </button>
                         </div>
                     </div>
                 </div>
@@ -852,42 +1100,83 @@
         </div>
 
         <!-- SEO优化内容区域 -->
-        <section class="seo-content">
-            <div class="seo-container">
-                <h2>在线图片格式转换工具 - 专业免费</h2>
-                <p>免费在线图片格式转换工具，支持JPG、PNG、GIF、BMP、WEBP、ICO等多种格式互转。无需下载安装任何软件，打开浏览器即可使用。支持自定义尺寸调整、质量压缩，是您处理图片的最佳选择。</p>
+        <div class="controle-zh">
+            <section class="seo-content">
+                <div class="seo-container">
+                    <h2>在线图片格式转换工具 - 专业免费</h2>
+                    <p>免费在线图片格式转换工具，支持JPG、PNG、GIF、BMP、WEBP、ICO等多种格式互转。无需下载安装任何软件，打开浏览器即可使用。支持自定义尺寸调整、质量压缩，是您处理图片的最佳选择。</p>
 
-                <div class="seo-grid">
-                    <div>
-                        <h3>主要功能特色</h3>
-                        <ul class="feature-list">
-                            <li><span class="feature-icon">✓</span><strong>多格式支持</strong> - JPG、PNG、GIF、WEBP、BMP、ICO互转</li>
-                            <li><span class="feature-icon">✓</span><strong>尺寸调整</strong> - 自定义宽高，保持比例缩放</li>
-                            <li><span class="feature-icon">✓</span><strong>质量控制</strong> - 自由调节压缩质量，平衡文件大小</li>
-                            <li><span class="feature-icon">✓</span><strong>证件照处理</strong> - 支持证件照尺寸调整和裁剪</li>
-                            <li><span class="feature-icon">✓</span><strong>批量处理</strong> - 高效处理多张图片</li>
-                            <li><span class="feature-icon">✓</span><strong>隐私安全</strong> - 浏览器本地处理，不上传服务器</li>
-                            <li><span class="feature-icon">✓</span><strong>免费使用</strong> - 无需注册，无水印，永久免费</li>
-                        </ul>
+                    <div class="seo-grid">
+                        <div>
+                            <h3>主要功能特色</h3>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon">✓</span><strong>多格式支持</strong> - JPG、PNG、GIF、WEBP、BMP、ICO互转</li>
+                                <li><span class="feature-icon">✓</span><strong>尺寸调整</strong> - 自定义宽高，保持比例缩放</li>
+                                <li><span class="feature-icon">✓</span><strong>质量控制</strong> - 自由调节压缩质量，平衡文件大小</li>
+                                <li><span class="feature-icon">✓</span><strong>证件照处理</strong> - 支持证件照尺寸调整和裁剪</li>
+                                <li><span class="feature-icon">✓</span><strong>批量处理</strong> - 高效处理多张图片</li>
+                                <li><span class="feature-icon">✓</span><strong>隐私安全</strong> - 浏览器本地处理，不上传服务器</li>
+                                <li><span class="feature-icon">✓</span><strong>免费使用</strong> - 无需注册，无水印，永久免费</li>
+                            </ul>
 
-                        <h3>常用格式转换</h3>
-                        <p><strong>JPG转PNG：</strong>将有损压缩的JPG图片转换为支持透明背景的PNG格式，适合需要透明效果的场景。</p>
-                        <p><strong>PNG转JPG：</strong>将无损压缩的PNG图片转换为文件更小的JPG格式，适合网页展示和存储。</p>
-                        <p><strong>WEBP转换：</strong>现代网页格式，压缩率更高，支持透明和动画效果。</p>
+                            <h3>常用格式转换</h3>
+                            <p><strong>JPG转PNG：</strong>将有损压缩的JPG图片转换为支持透明背景的PNG格式，适合需要透明效果的场景。</p>
+                            <p><strong>PNG转JPG：</strong>将无损压缩的PNG图片转换为文件更小的JPG格式，适合网页展示和存储。</p>
+                            <p><strong>WEBP转换：</strong>现代网页格式，压缩率更高，支持透明和动画效果。</p>
+                        </div>
+
+                        <aside class="related-tools">
+                            <h3>🔧 相关工具</h3>
+                            <a href="/" class="tool-link">🎨 在线PS编辑器</a>
+                            <a href="/zjz.html" class="tool-link">📷 证件照换底色</a>
+                            <a href="#" class="tool-link">🗜️ 图片压缩工具</a>
+                            <a href="#" class="tool-link">✂️ 图片裁剪工具</a>
+                            <a href="#" class="tool-link">📐 图片尺寸调整</a>
+                            <a href="#" class="tool-link">🖼️ 图片格式识别</a>
+                        </aside>
                     </div>
-
-                    <aside class="related-tools">
-                        <h3>🔧 相关工具</h3>
-                        <a href="/" class="tool-link">🎨 在线PS编辑器</a>
-                        <a href="/zjz.html" class="tool-link">📷 证件照换底色</a>
-                        <a href="#" class="tool-link">🗜️ 图片压缩工具</a>
-                        <a href="#" class="tool-link">✂️ 图片裁剪工具</a>
-                        <a href="#" class="tool-link">📐 图片尺寸调整</a>
-                        <a href="#" class="tool-link">🖼️ 图片格式识别</a>
-                    </aside>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <div class="controle-en">
+            <!-- SEO Content Area -->
+            <section class="seo-content">
+                <div class="seo-container">
+                    <h2>Online Image Format Converter - Professional & Free</h2>
+                    <p>Free online image format converter, supporting conversion between JPG, PNG, GIF, BMP, WEBP, ICO and more. No download required, use directly in browser. Supports custom size adjustment and quality compression.</p>
+
+                    <div class="seo-grid">
+                        <div>
+                            <h3>Main Features</h3>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon">✓</span><strong>Multiple Formats</strong> - Convert between JPG, PNG, GIF, WEBP, BMP, ICO</li>
+                                <li><span class="feature-icon">✓</span><strong>Size Adjustment</strong> - Custom width and height, maintain aspect ratio</li>
+                                <li><span class="feature-icon">✓</span><strong>Quality Control</strong> - Adjust compression quality, balance file size</li>
+                                <li><span class="feature-icon">✓</span><strong>ID Photo Processing</strong> - Support ID photo size adjustment and cropping</li>
+                                <li><span class="feature-icon">✓</span><strong>Batch Processing</strong> - Efficiently process multiple images</li>
+                                <li><span class="feature-icon">✓</span><strong>Privacy & Security</strong> - Browser-side processing, no server upload</li>
+                                <li><span class="feature-icon">✓</span><strong>Free to Use</strong> - No registration, no watermark, forever free</li>
+                            </ul>
+
+                            <h3>Common Conversions</h3>
+                            <p><strong>JPG to PNG:</strong> Convert lossy JPG images to PNG format with transparent background support, ideal for transparency effects.</p>
+                            <p><strong>PNG to JPG:</strong> Convert lossless PNG images to smaller JPG format, suitable for web display and storage.</p>
+                            <p><strong>WEBP Conversion:</strong> Modern web format with higher compression ratio, supporting transparency and animation effects.</p>
+                        </div>
+
+                        <aside class="related-tools">
+                            <h3>🔧 Related Tools</h3>
+                            <a href="/" class="tool-link">🎨 Online PS Editor</a>
+                            <a href="/zjz.html" class="tool-link">📷 ID Photo Background</a>
+                            <a href="#" class="tool-link">🗜️ Image Compressor</a>
+                            <a href="#" class="tool-link">✂️ Image Cropper</a>
+                            <a href="#" class="tool-link">📐 Image Resizer</a>
+                            <a href="#" class="tool-link">🖼️ Image Format Detector</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <script>
             let originalImage = null;
@@ -1155,7 +1444,7 @@
                             showLoading(false);
 
                             // 显示成功消息
-                            alert('图片转换完成！文件已下载。');
+                            // alert('图片转换完成！文件已下载。');
                         }, mimeType, quality);
 
                     } catch (error) {
@@ -1246,6 +1535,77 @@
                 const i = Math.floor(Math.log(bytes) / Math.log(k));
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
             }
+
+            // 根据不同语言显示不同页面内容
+            (function () {
+                const userLang = navigator.language || navigator.userLanguage;
+                // console.log('User language:', navigator.language,navigator.userLanguage);
+
+                if (userLang == 'zh') {
+                    // 动态显示快捷内容
+                    document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                    // 动态修改 标题title
+                    document.title = "在线图片格式转换工具 - JPG/PNG/GIF/WEBP互转 | 免费图片转换器";
+                } else {
+                    document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                    // 动态修改 标题title
+                    document.title = "Online Image Format Converter - JPG/PNG/GIF/WEBP Conversion | Free Image Converter";
+                }
+            })();
+
+              (function () {
+                    const btn = document.getElementById('toggleLang');
+                    const label = document.getElementById('langLabel');
+                    const flag = document.getElementById('langFlag');
+                    const state = document.getElementById('langState');
+                    const userLang = navigator.language || navigator.userLanguage;
+
+                    function showLang(lang) {
+                        if (lang === 'en') {
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                            document.body.classList.add('lang-en');
+                            label.textContent = 'English';
+                            flag.style.background = 'linear-gradient(90deg,#00247d 0%,#cf142b 100%)';
+                            state.textContent = 'EN';
+                            localStorage.setItem('site_lang', 'en');
+                    document.title = "Online Image Format Converter - JPG/PNG/GIF/WEBP Conversion | Free Image Converter";
+
+                        } else {
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                            document.body.classList.remove('lang-en');
+                            label.textContent = '中文';
+                            flag.style.background = 'linear-gradient(90deg,#de2910 0%,#de2910 100%)';
+                            state.textContent = '中';
+                            localStorage.setItem('site_lang', 'zh');
+                            document.title = "在线图片格式转换工具 - JPG/PNG/GIF/WEBP互转 | 免费图片转换器";
+                        }
+                    }
+
+                    // read saved preference first
+                    const saved = localStorage.getItem('site_lang') || userLang;
+                    if (saved) showLang(saved);
+
+                    btn.addEventListener('click', function () {
+                        const currentlyEn = document.body.classList.contains('lang-en');
+                        showLang(currentlyEn ? 'zh' : 'en');
+                        // small click feedback
+                        btn.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-4px)' }, { transform: 'translateY(0)' }], { duration: 220 });
+                    });
+
+                    // keep toggle in sync if other code sets initial display (on load)
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // if saved not present, leave existing auto-detect but update button UI
+                        if (!saved) {
+                            const enVisible = Array.from(document.querySelectorAll('.controle-en')).some(el => getComputedStyle(el).display !== 'none');
+                            showLang(enVisible ? 'en' : 'zh');
+                        }
+                    });
+                })();
+
         </script>
     </body>
 

@@ -287,6 +287,7 @@
                 border-radius: 15px;
                 box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
                 overflow: hidden;
+                margin-top: 10px;
             }
 
             .header {
@@ -582,48 +583,165 @@
                     grid-template-columns: 1fr;
                 }
             }
+
+            /* prettier language toggle */
+            .language-toggle {
+                position: absolute;
+                bottom: 40vh;
+                right: 18px;
+                z-index: 1001;
+                font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+
+            .language-toggle button {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 8px 14px;
+                border-radius: 999px;
+                border: none;
+                cursor: pointer;
+                color: #fff;
+                background: linear-gradient(90deg, #09f980 0%, #42d5b8 100%);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.18);
+                font-weight: 600;
+                font-size: 14px;
+                transition: transform .15s ease, box-shadow .15s ease, opacity .12s ease;
+            }
+
+            .language-toggle button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 14px 30px rgba(102, 126, 234, 0.22);
+            }
+
+            .language-toggle .flag {
+                width: 18px;
+                height: 12px;
+                border-radius: 2px;
+                flex: 0 0 auto;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+            }
+
+            .language-toggle .label {
+                white-space: nowrap;
+            }
+
+            /* small state indicator */
+            .language-toggle .pill {
+                background: rgba(255, 255, 255, 0.12);
+                padding: 4px 6px;
+                border-radius: 8px;
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.95);
+            }
+
+            /* when english active */
+            body.lang-en .language-toggle button {
+                background: linear-gradient(90deg, #22c1c3 0%, #4ca1af 100%);
+                box-shadow: 0 8px 20px rgba(34, 193, 195, 0.16);
+            }
+
+            /* ensure focus accessibility */
+            .language-toggle button:focus {
+                outline: 3px solid rgba(102, 126, 234, 0.18);
+                outline-offset: 3px;
+            }
         </style>
     </head>
 
     <body>
+        <!-- 添加一个中英文切换按钮 -->
+        <div class="language-toggle">
+            <button id="toggleLang" aria-label="切换语言 / Toggle language" type="button">
+                <span class="flag" id="langFlag" style="background: linear-gradient(90deg,#de2910 0%,#de2910 100%);"></span>
+                <span class="label" id="langLabel">中文</span>
+                <span class="pill" id="langState">切换</span>
+            </button>
+        </div>
+
         <!-- 顶部导航 -->
-        <nav class="site-navigation">
-            <div class="nav-container">
-                <a href="/" class="nav-logo">🎨 在线PS编辑器</a>
-                <ul class="nav-links">
-                    <li><a href="/">在线编辑</a></li>
-                    <li><a href="/zjz.html" class="active">证件照换底色</a></li>
-                    <li><a href="/translation.html">图片转换</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="controle-zh">
+            <nav class="site-navigation">
+                <div class="nav-container">
+                    <a href="/" class="nav-logo">🎨 在线PS编辑器</a>
+                    <ul class="nav-links">
+                        <li><a href="/">在线编辑</a></li>
+                        <li><a href="/zjz.html" class="active">证件照换底色</a></li>
+                        <li><a href="/translation.html">图片转换</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="controle-en">
+            <nav class="site-navigation">
+                <div class="nav-container">
+                    <a href="/" class="nav-logo">🎨 Online PS Editor</a>
+                    <ul class="nav-links">
+                        <li><a href="/">Online Editing</a></li>
+                        <li><a href="/zjz.html" class="active">ID Photo Background Change</a></li>
+                        <li><a href="/translation.html">Image Conversion</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
 
         <!-- 面包屑导航 -->
-        <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <div class="breadcrumb-container">
-                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a itemprop="item" href="/"><span itemprop="name">首页</span></a>
-                    <meta itemprop="position" content="1" />
-                </span> >
-                <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name">证件照换底色</span>
-                    <meta itemprop="position" content="2" />
-                </span>
-            </div>
-        </nav>
+        <div class="controle-zh">
+            <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <div class="breadcrumb-container">
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="/"><span itemprop="name">首页</span></a>
+                        <meta itemprop="position" content="1" />
+                    </span> >
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">证件照换底色</span>
+                        <meta itemprop="position" content="2" />
+                    </span>
+                </div>
+            </nav>
+        </div>
+        <div class="controle-en">
+            <nav class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <div class="breadcrumb-container">
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+                        <meta itemprop="position" content="1" />
+                    </span> >
+                    <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        <span itemprop="name">ID Photo Background Change</span>
+                        <meta itemprop="position" content="2" />
+                    </span>
+                </div>
+            </nav>
+        </div>
 
         <div class="container">
             <header class="header">
-                <h1>🎨 证件照换底色工具</h1>
-                <p>智能抠图换背景 - 红底、蓝底、白底一键切换 - 专业、快速、免费</p>
+                <div class="controle-zh">
+                    <h1>🎨 证件照换底色工具</h1>
+                    <p>智能抠图换背景 - 红底、蓝底、白底一键切换 - 专业、快速、免费</p>
+                </div>
+                <div class="controle-en">
+                    <h1>🎨 ID Photo Background Change Tool</h1>
+                    <p>Intelligent background removal - One-click switch between red, blue, and white backgrounds - Professional, fast, and free</p>
+                </div>
+
             </header>
 
             <main class="main-content">
                 <!-- 文件上传区域 -->
                 <section class="upload-section" id="uploadArea">
                     <div class="upload-icon">📁</div>
-                    <h2>点击或拖拽上传证件照</h2>
-                    <p>支持 JPG、PNG、GIF、BMP 等格式，自动识别人像背景</p>
+                    <div class="controle-zh">
+                        <h2>点击或拖拽上传证件照</h2>
+                        <p>支持 JPG、PNG、GIF、BMP 等格式，自动识别人像背景</p>
+                    </div>
+                    <div class="controle-en">
+                        <h2>Click or drag to upload ID photo</h2>
+                        <p>Supports JPG, PNG, GIF, BMP, etc. Automatically recognizes human portrait background</p>
+                    </div>
+
                     <input type="file" id="fileInput" accept="image/*" class="hidden">
                 </section>
 
@@ -631,7 +749,12 @@
                 <section class="workspace hidden" id="workspace">
                     <!-- 原图预览 -->
                     <div class="image-panel">
-                        <h3>📷 原图预览</h3>
+                        <div class="controle-zh">
+                            <h3>📷 原图预览</h3>
+                        </div>
+                        <div class="controle-en">
+                            <h3>📷 Original Image Preview</h3>
+                        </div>
                         <div class="image-container">
                             <img id="originalImage" class="preview-image" alt="证件照原图预览">
                         </div>
@@ -639,7 +762,12 @@
 
                     <!-- 处理结果 -->
                     <div class="image-panel">
-                        <h3>✨ 换底色结果</h3>
+                         <div class="controle-zh">
+                            <h3>✨ 换底色结果</h3>
+                        </div>
+                        <div class="controle-en">
+                            <h3>✨ Background Change Result</h3>
+                        </div>
                         <div class="image-container">
                             <canvas id="resultCanvas" class="preview-image"></canvas>
                             <div class="loading hidden" id="loading">
@@ -654,7 +782,12 @@
                 <section class="controls hidden" id="controls">
                     <!-- 证件照换底色 -->
                     <div class="control-group">
-                        <h3>🎯 证件照背景颜色选择</h3>
+                         <div class="controle-zh">
+                            <h3>🎯 证件照背景颜色选择</h3>
+                        </div>
+                        <div class="controle-en">
+                            <h3>🎯 ID Photo Background Color Selection</h3>
+                        </div>
                         <div class="color-options">
                             <div class="color-btn color-white" data-color="#FFFFFF" title="白底证件照"></div>
                             <div class="color-btn color-red" data-color="#FF4757" title="红底证件照"></div>
@@ -662,34 +795,112 @@
                             <div class="color-btn color-gray" data-color="#747D8C" title="灰底证件照"></div>
                         </div>
                         <div class="custom-color">
-                            <label>自定义颜色:</label>
+                            <div class="controle-zh">
+                                <label>自定义颜色:</label>
+                            </div>
+                            <div class="controle-en">
+                                <label>Custom Color:</label>
+                            </div>
+
                             <input type="color" id="customColor" value="#FFFFFF">
-                            <button class="btn" onclick="changeBackground(document.getElementById('customColor').value)">应用自定义颜色</button>
+                            <button class="btn" onclick="changeBackground(document.getElementById('customColor').value)">
+                                <div class="controle-zh">
+                                    应用自定义颜色
+                                </div>
+                                <div class="controle-en">
+                                    Apply Custom Color
+                                </div>
+                            </button>
                         </div>
                         <div class="tolerance-control">
-                            <label>背景识别精度: <span id="toleranceValue">30</span></label>
+                            <label>
+                                <span class="controle-zh">
+                                    背景识别精度:
+                                </span>
+                                <span class="controle-en">
+                                    Background Recognition Accuracy:
+                                </span>
+                                <span id="toleranceValue">30</span></label>
                             <input type="range" id="tolerance" min="10" max="100" value="30">
                         </div>
                     </div>
 
                     <!-- 一键抠图 -->
                     <div class="control-group">
-                        <h3>✂️ 一键智能抠图</h3>
-                        <p style="color: #666; margin-bottom: 15px;">自动识别人像主体并移除背景，生成透明背景图片</p>
-                        <button class="btn btn-primary" onclick="smartCutout()">🎯 开始抠图</button>
+                        <span class="controle-zh">
+                            <h3>✂️ 一键智能抠图</h3>
+                        </span>
+                        <span class="controle-en">
+                            <h3>✂️ One-Click Smart Cutout</h3>
+                        </span>
+
+                        <p style="color: #666; margin-bottom: 15px;">
+                            <span class="controle-zh">
+                                自动识别人像主体并移除背景，生成透明背景图片
+
+                            </span>
+                            <span class="controle-en">
+                                Automatically identifies the subject and removes the background, generating a transparent background image.
+                            </span>
+                            </span>
+                        </p>
+                        <button class="btn btn-primary" onclick="smartCutout()">
+                            <span class="controle-zh">
+                        🎯  开始抠图
+                            </span>
+                            <span class="controle-en">
+                        🎯   Start Cutout
+                            </span>
+                            </button>
                         <div class="tolerance-control">
-                            <label>抠图精度: <span id="cutoutToleranceValue">25</span></label>
+                            <label>
+                                <span class="controle-zh">
+                                    抠图精度:
+                                </span>
+                                <span class="controle-en">
+                                    Cutout Accuracy:
+                                </span>
+                                 <span id="cutoutToleranceValue">25</span></label>
                             <input type="range" id="cutoutTolerance" min="5" max="50" value="25">
                         </div>
                     </div>
 
                     <!-- 导出功能 -->
                     <div class="control-group">
-                        <h3>💾 导出设置</h3>
+                        <h3>
+                            <span class="controle-zh">
+                            💾 导出设置:
+                            </span>
+                            <span class="controle-en">
+                                💾 Export Options
+                            </span>
+                            </h3>
                         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                            <button class="btn btn-success" onclick="exportImage('png')">📥 导出 PNG</button>
-                            <button class="btn btn-success" onclick="exportImage('jpg')">📥 导出 JPG</button>
-                            <button class="btn btn-export" onclick="resetImage()">🔄 重置图片</button>
+                            <button class="btn btn-success" onclick="exportImage('png')">
+                                <span class="controle-zh">
+                                    📥 导出 PNG
+                                </span>
+                                <span class="controle-en">
+                                📥   Export PNG
+                                </span>
+                                
+                                </button>
+                            <button class="btn btn-success" onclick="exportImage('jpg')">
+                                <span class="controle-zh">
+                                📥   导出 JPG
+                                </span>
+                                <span class="controle-en">
+                                📥  Export JPG
+                                </span>
+                            </button>
+                            <button class="btn btn-export" onclick="resetImage()">
+                                <span class="controle-zh">
+                                🔄   重置图片
+                                </span>
+                                <span class="controle-en">
+                                🔄  Reset Image
+                                </span>
+                                </button>
                         </div>
                     </div>
                 </section>
@@ -697,37 +908,73 @@
         </div>
 
         <!-- SEO优化内容区域 -->
-        <section class="seo-content">
-            <div class="seo-container">
-                <h2>证件照换底色工具 - 专业在线处理</h2>
-                <p>免费在线证件照换底色工具，支持红底、蓝底、白底证件照一键切换。采用智能AI算法，自动识别人像背景，换底色效果自然真实。无需下载安装任何软件，打开浏览器即可使用。</p>
-
-                <div class="seo-grid">
-                    <div>
-                        <h3>主要功能特色</h3>
-                        <ul class="feature-list">
-                            <li><span class="feature-icon">✓</span><strong>智能换底色</strong> - 一键切换红底、蓝底、白底证件照</li>
-                            <li><span class="feature-icon">✓</span><strong>AI智能抠图</strong> - 自动识别人像边缘，抠图效果专业</li>
-                            <li><span class="feature-icon">✓</span><strong>自定义颜色</strong> - 支持任意背景颜色设置</li>
-                            <li><span class="feature-icon">✓</span><strong>精度调节</strong> - 可调节背景识别精度，适应不同图片</li>
-                            <li><span class="feature-icon">✓</span><strong>多格式支持</strong> - 支持PNG、JPG等多种格式导出</li>
-                            <li><span class="feature-icon">✓</span><strong>免费使用</strong> - 完全免费，无水印，无限制使用</li>
-                        </ul>
-
-                        <h3>适用场景</h3>
-                        <p>适合各种证件照制作需求：身份证照片、护照照片、驾驶证照片、学生证照片、工作证照片、简历照片等。不同机构对证件照背景色要求不同，我们的工具可以快速满足各种需求。</p>
+        <div class="controle-zh">
+            <section class="seo-content">
+                <div class="seo-container">
+                    <h2>证件照换底色工具 - 专业在线处理</h2>
+                    <p>免费在线证件照换底色工具，支持红底、蓝底、白底证件照一键切换。采用智能AI算法，自动识别人像背景，换底色效果自然真实。无需下载安装任何软件，打开浏览器即可使用。</p>
+            
+                    <div class="seo-grid">
+                        <div>
+                            <h3>主要功能特色</h3>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon">✓</span><strong>智能换底色</strong> - 一键切换红底、蓝底、白底证件照</li>
+                                <li><span class="feature-icon">✓</span><strong>AI智能抠图</strong> - 自动识别人像边缘，抠图效果专业</li>
+                                <li><span class="feature-icon">✓</span><strong>自定义颜色</strong> - 支持任意背景颜色设置</li>
+                                <li><span class="feature-icon">✓</span><strong>精度调节</strong> - 可调节背景识别精度，适应不同图片</li>
+                                <li><span class="feature-icon">✓</span><strong>多格式支持</strong> - 支持PNG、JPG等多种格式导出</li>
+                                <li><span class="feature-icon">✓</span><strong>免费使用</strong> - 完全免费，无水印，无限制使用</li>
+                            </ul>
+            
+                            <h3>适用场景</h3>
+                            <p>适合各种证件照制作需求：身份证照片、护照照片、驾驶证照片、学生证照片、工作证照片、简历照片等。不同机构对证件照背景色要求不同，我们的工具可以快速满足各种需求。</p>
+                        </div>
+            
+                        <aside class="related-tools">
+                            <h3>🔧 相关工具</h3>
+                            <a href="/" class="tool-link">🎨 在线PS编辑器</a>
+                            <a href="/translation.html" class="tool-link">🔄 图片格式转换</a>
+                            <a href="#" class="tool-link">📏 证件照尺寸调整</a>
+                            <a href="#" class="tool-link">🖼️ 图片压缩工具</a>
+                        </aside>
                     </div>
-
-                    <aside class="related-tools">
-                        <h3>🔧 相关工具</h3>
-                        <a href="/" class="tool-link">🎨 在线PS编辑器</a>
-                        <a href="/translation.html" class="tool-link">🔄 图片格式转换</a>
-                        <a href="#" class="tool-link">📏 证件照尺寸调整</a>
-                        <a href="#" class="tool-link">🖼️ 图片压缩工具</a>
-                    </aside>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+        <!-- 英文区域 -->
+        <div class="controle-en">
+            <section class="seo-content">
+                <div class="seo-container">
+                    <h2>ID Photo Background Color Change Tool - Professional Online Processing</h2>
+                    <p>Free online ID photo background color change tool, supporting one-click switching of red, blue, and white ID photos. Using intelligent AI algorithms, it automatically recognizes the background of the portrait, and the background color change effect is natural and realistic. No software installation is required, just open the browser to use.</p>
+        
+                    <div class="seo-grid">
+                        <div>
+                            <h3>Key Features</h3>
+                            <ul class="feature-list">
+                                <li><span class="feature-icon">✓</span><strong>Intelligent Background Color Change</strong> - One-click switching of red, blue, and white ID photos</li>
+                                <li><span class="feature-icon">✓</span><strong>AI Smart Cutout</strong> - Automatically recognizes the edges of the portrait, professional cutout effect</li>
+                                <li><span class="feature-icon">✓</span><strong>Custom Color</strong> - Supports any background color setting</li>
+                                <li><span class="feature-icon">✓</span><strong>Precision Adjustment</strong> - Adjustable background recognition precision to adapt to different images</li>
+                                <li><span class="feature-icon">✓</span><strong>Multi-Format Support</strong> - Supports exporting in various formats such as PNG, JPG, etc.</li>
+                                <li><span class="feature-icon">✓</span><strong>Free to Use</strong> - Completely free, no watermarks, no usage restrictions</li>
+                            </ul>
+
+                            <h3>Applicable Scenarios</h3>
+                            <p>Suitable for various ID photo production needs: ID card photos, passport photos, driver's license photos, student ID photos, work ID photos, resume photos, etc. Different institutions have different requirements for ID photo background colors, and our tool can quickly meet various needs.</p>
+                        </div>
+        
+                        <aside class="related-tools">
+                            <h3>🔧 Related Tools</h3>
+                            <a href="/" class="tool-link">🎨 Online PS Editor</a>
+                            <a href="/translation.html" class="tool-link">🔄 Image Format Converter</a>
+                            <a href="#" class="tool-link">📏 ID Photo Size Adjustment</a>
+                            <a href="#" class="tool-link">🖼️ Image Compression Tool</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- 原有JavaScript代码保持不变 -->
         <script>
@@ -1039,6 +1286,58 @@
                     btn.classList.remove('selected');
                 });
             }
+
+
+            (function () {
+                const btn = document.getElementById('toggleLang');
+                const label = document.getElementById('langLabel');
+                const flag = document.getElementById('langFlag');
+                const state = document.getElementById('langState');
+                const userLang = navigator.language || navigator.userLanguage;
+
+                function showLang(lang) {
+                    if (lang === 'en') {
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                        document.body.classList.add('lang-en');
+                        label.textContent = 'English';
+                        flag.style.background = 'linear-gradient(90deg,#00247d 0%,#cf142b 100%)';
+                        state.textContent = 'EN';
+                        localStorage.setItem('site_lang', 'en');
+                        document.title = "Online Image Format Converter - JPG/PNG/GIF/WEBP Conversion | Free Image Converter";
+
+                    } else {
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                        document.body.classList.remove('lang-en');
+                        label.textContent = '中文';
+                        flag.style.background = 'linear-gradient(90deg,#de2910 0%,#de2910 100%)';
+                        state.textContent = '中';
+                        localStorage.setItem('site_lang', 'zh');
+                        document.title = "在线图片格式转换工具 - JPG/PNG/GIF/WEBP互转 | 免费图片转换器";
+                    }
+                }
+
+                // read saved preference first
+                const saved = localStorage.getItem('site_lang') || userLang;
+                if (saved) showLang(saved);
+
+                btn.addEventListener('click', function () {
+                    const currentlyEn = document.body.classList.contains('lang-en');
+                    showLang(currentlyEn ? 'zh' : 'en');
+                    // small click feedback
+                    btn.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-4px)' }, { transform: 'translateY(0)' }], { duration: 220 });
+                });
+
+                // keep toggle in sync if other code sets initial display (on load)
+                document.addEventListener('DOMContentLoaded', function () {
+                    // if saved not present, leave existing auto-detect but update button UI
+                    if (!saved) {
+                        const enVisible = Array.from(document.querySelectorAll('.controle-en')).some(el => getComputedStyle(el).display !== 'none');
+                        showLang(enVisible ? 'en' : 'zh');
+                    }
+                });
+            })();
         </script>
     </body>
 

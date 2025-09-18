@@ -2,7 +2,7 @@
 <html dir="ltr" lang="zh-CN">
 
     <head>
-        <title>在线PS-免费编辑图片</title>
+        <title>在线PS-免费编辑图片|抠图神器|证件照换底色</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
 
@@ -87,8 +87,8 @@
         }
         </script>
 
-        <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-        <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script>
+        <!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+        <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script> -->
 
         <script src="dist/bundle.js"></script>
 
@@ -156,6 +156,40 @@
                 display: none;
                 /* 隐藏但对SEO有用 */
             }
+
+            .custom-shortcuts {
+                position: fixed;
+                right: 3vw;
+                top: 10px;
+            }
+
+            .custom-shortcuts .tab-item {
+                font-size: calc(14/1920 * 100vw);
+                color: #adecab;
+                text-decoration: none;
+                padding: 6px 12px;
+                border-radius: 6px 6px 0 0;
+                 color: #44c08a;
+                font-weight: bold;
+                border-bottom: 2px solid #44c08a;
+                background: linear-gradient(90deg, #eafff2 60%, #f5fff9 100%);
+                box-shadow: 0 2px 8px rgba(68, 192, 138, 0.08);
+                transition: all 0.3s ease;
+            }
+
+            .custom-shortcuts .tab-item:hover {
+                color: #44c08a;
+            }
+
+            /* 固定的选中样式 */
+            .custom-shortcuts .tab-item.active {
+                color: #001aff;
+                font-weight: bold;
+                border-bottom: 2px solid #0800ff;
+                background: linear-gradient(90deg, #00eeff 60%, #f8f5ff 100%);
+                box-shadow: 0 2px 8px rgba(68, 192, 138, 0.08);
+               
+            }
         </style>
 
     </head>
@@ -180,6 +214,26 @@
 
             <h3>为什么选择我们</h3>
             <p>相比传统PS软件，我们的在线版本具有以下优势：免费使用、无需下载、操作简单、功能专业、云端保存、随时随地访问。</p>
+        </div>
+
+        <!-- 英语版隐藏的SEO内容 -->
+        <div class="main-features-en" style="display: none;">
+            <h1>Free Online Photoshop - Professional Image Editing Tool</h1>
+            <h2>Main Features</h2>
+            <ul class="feature-list">
+                <li>🎨 <strong>Online Background Removal</strong> - Smart magic wand tool for one-click background removal</li>
+                <li>📸 <strong>ID Photo Background Change</strong> - One-click switch between red, blue, and white backgrounds</li>
+                <li>✨ <strong>Image Retouching</strong> - Adjust brightness, contrast, and saturation</li>
+                <li>🖼️ <strong>Filter Effects</strong> - Various professional filters to enhance image quality</li>
+                <li>📱 <strong>Multi-Device Support</strong> - Compatible with computers, phones, and tablets</li>
+                <li>💾 <strong>Multiple Format Support</strong> - Supports JPG, PNG, GIF, PSD formats</li>
+            </ul>
+
+            <h3>Use Cases</h3>
+            <p>Ideal for users needing quick image processing: creating ID photos, retouching product images, social media graphics, resume photos, e-commerce product images, etc. No need to install bulky Photoshop software; just open your browser to use.</p>
+
+            <h3>Why Choose Us</h3>
+            <p>Compared to traditional Photoshop software, our online version offers the following advantages: free to use, no download required, easy to operate, professional features, cloud storage, accessible anytime and anywhere.</p>
         </div>
 
         <div class="wrapper">
@@ -254,15 +308,23 @@
         <div id="popups"></div>
 
         <!-- 自定义快捷内容 -->
-        <div class="custom-shortcuts">
-
-            <span style="margin-right: 25vw;">
-                <span>
-                    🚀 快速工具:
-                </span>
-                <a href="./zjz.html" title="证件照换底色 - 红蓝白底一键切换">证件照换底色-抠图</a>
-                &nbsp; | &nbsp;
-                <a href="./translation.html" title="图片转换，证件照裁剪">图片格式转换-裁剪</a>
+        <div class="custom-shortcuts controle-zh">
+            <span style="margin-right: 40vw;width: 10vw;">
+                <a href="#" class="tab-item active" title="在线PS-图片处理">在线PS</a>
+                <a href="./zjz.html" class="tab-item" title="证件照换底色 - 红蓝白底一键切换">证件照换底色</a>
+                <a href="./translation.html" class="tab-item" title="图片转换，证件照裁剪">图片格式转换</a>
+                <a href="http://zhulongxu.com/zaixianps" target="_blank" class="tab-item" title="使用文档">使用文档</a>
+                <a href="http://zhulongxu.com/about" target="_blank" class="tab-item" title="联系我">联系我</a>
+            </span>
+        </div>
+        <!-- 英语版本的快捷内容 -->
+        <div class="custom-shortcuts controle-en" style="display: none;">
+            <span style="margin-right: 40vw;width: 10vw;">
+                <a href="#" class="tab-item active" title="Online Photoshop - Image Editing">Online PS</a>
+                <a href="./zjz.html" class="tab-item" title="ID Photo Background Change - One-Click Switch">ID Photo Background</a>
+                <a href="./translation.html" class="tab-item" title="Image Format Conversion, ID Photo Cropping">Image Conversion</a>
+                <a href="http://zhulongxu.com/zaixianps" target="_blank" class="tab-item" title="Use documentation">Use documentation</a>
+                <a href="http://zhulongxu.com/about" target="_blank" class="tab-item" title="Contact Us">Contact Us</a>
             </span>
         </div>
 
@@ -279,6 +341,44 @@
 
             <p><small>版权所有 © 2024 在线PS编辑器 | 免费使用 | 技术支持</small></p>
         </footer>
+        <!-- 英语版本的SEO底部 -->
+        <footer class="footer-en" style="display: none;">
+            <h4>Online Photoshop Editor - Your Professional Image Processing Assistant</h4>
+            <p>We offer completely free online image editing services with no software downloads required. Supports professional features like background removal, image retouching, background changing, and filter application. Ideal for creating ID photos, processing product images, social media graphics, and more.</p>
+
+            <div class="keywords-footer">
+                <strong>Popular Searches:</strong>
+                Online Photoshop, Free Photo Editing, ID Photo Background Change, Online Background Removal, Image Editor, Photoshop Web Version, Free Beauty Tool
+            </div>
+
+            <p><small>Copyright © 2024 Online Photoshop Editor | Free to Use | Technical Support</small></p>
+        </footer>
+
+        <script>
+            // 根据不同语言显示不同页面内容
+            (function() {
+                const saved = localStorage.getItem('site_lang');
+                if(saved) {
+                    if(saved == 'zh') {
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                    }else {
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                    }
+                }else {
+                    const userLang = navigator.language || navigator.userLanguage;
+                    if(userLang == 'zh') {
+                        // 动态显示快捷内容
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                    }else {
+                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                    }
+                }
+            })();
+        </script>
     </body>
 
 </html>
