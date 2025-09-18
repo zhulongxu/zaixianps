@@ -53,7 +53,8 @@
         <meta name="twitter:title" content="在线PS网页版 - 免费图片编辑器">
         <meta name="twitter:description" content="无需下载的专业图片编辑工具">
         <meta name="twitter:image" content="/images/twitter-image.jpg">
-
+        <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+        <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script>
         <!-- 结构化数据 -->
         <script type="application/ld+json">
         {
@@ -87,8 +88,7 @@
         }
         </script>
 
-        <!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-        <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script> -->
+
 
         <script src="dist/bundle.js"></script>
 
@@ -169,7 +169,7 @@
                 text-decoration: none;
                 padding: 6px 12px;
                 border-radius: 6px 6px 0 0;
-                 color: #44c08a;
+                color: #44c08a;
                 font-weight: bold;
                 border-bottom: 2px solid #44c08a;
                 background: linear-gradient(90deg, #eafff2 60%, #f5fff9 100%);
@@ -188,7 +188,7 @@
                 border-bottom: 2px solid #0800ff;
                 background: linear-gradient(90deg, #00eeff 60%, #f8f5ff 100%);
                 box-shadow: 0 2px 8px rgba(68, 192, 138, 0.08);
-               
+
             }
         </style>
 
@@ -355,29 +355,29 @@
         </footer>
 
         <script>
-            // 根据不同语言显示不同页面内容
-            (function() {
-                const saved = localStorage.getItem('site_lang');
-                if(saved) {
-                    if(saved == 'zh') {
-                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
-                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
-                    }else {
-                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                // 根据不同语言显示不同页面内容
+                (function () {
+                    const saved = localStorage.getItem('site_lang');
+                    if (saved) {
+                        if (saved == 'zh') {
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                        } else {
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                        }
+                    } else {
+                        const userLang = navigator.language || navigator.userLanguage;
+                        if (userLang == 'zh') {
+                            // 动态显示快捷内容
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                        } else {
+                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                        }
                     }
-                }else {
-                    const userLang = navigator.language || navigator.userLanguage;
-                    if(userLang == 'zh') {
-                        // 动态显示快捷内容
-                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
-                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
-                    }else {
-                        document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
-                        document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
-                    }
-                }
-            })();
+                })();
         </script>
     </body>
 
