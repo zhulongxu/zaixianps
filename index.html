@@ -53,8 +53,8 @@
         <meta name="twitter:title" content="在线PS网页版 - 免费图片编辑器">
         <meta name="twitter:description" content="无需下载的专业图片编辑工具">
         <meta name="twitter:image" content="/images/twitter-image.jpg">
-        <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-        <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script>
+        <!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script> -->
+        <!-- <script>LA.init({ id: "3NS3cErz0NGDEmjU", ck: "3NS3cErz0NGDEmjU" })</script> -->
         <!-- 结构化数据 -->
         <script type="application/ld+json">
         {
@@ -127,11 +127,12 @@
             .custom-shortcuts {
                 position: fixed;
                 right: 3vw;
+                cursor: pointer;
                 top: 10px;
 
                 span {
                     font-size: calc(14/1920 * 100vw);
-                    color: #adecab;
+                    color: #fff;
 
                     button {
                         font-size: calc(14/1920 * 100vw);
@@ -147,7 +148,7 @@
 
                 a {
                     font-size: calc(14/1920 * 100vw);
-                    color: #adecab;
+                    color: #fff;
                 }
             }
 
@@ -309,22 +310,14 @@
 
         <!-- 自定义快捷内容 -->
         <div class="custom-shortcuts controle-zh">
-            <span style="margin-right: 40vw;width: 10vw;">
-                <a href="#" class="tab-item active" title="在线PS-图片处理">在线PS</a>
-                <a href="./zjz.html" class="tab-item" title="证件照换底色 - 红蓝白底一键切换">证件照换底色</a>
-                <a href="./translation.html" class="tab-item" title="图片转换，证件照裁剪">图片格式转换</a>
-                <a href="http://zhulongxu.com/zaixianps" target="_blank" class="tab-item" title="使用文档">使用文档</a>
-                <a href="http://zhulongxu.com/about" target="_blank" class="tab-item" title="联系我">联系我</a>
+            <span style="margin-right: 1vw;">
+                图片|视频压缩处理|转换
             </span>
         </div>
         <!-- 英语版本的快捷内容 -->
         <div class="custom-shortcuts controle-en" style="display: none;">
-            <span style="margin-right: 40vw;width: 10vw;">
-                <a href="#" class="tab-item active" title="Online Photoshop - Image Editing">Online PS</a>
-                <a href="./zjz.html" class="tab-item" title="ID Photo Background Change - One-Click Switch">ID Photo Background</a>
-                <a href="./translation.html" class="tab-item" title="Image Format Conversion, ID Photo Cropping">Image Conversion</a>
-                <a href="http://zhulongxu.com/zaixianps" target="_blank" class="tab-item" title="Use documentation">Use documentation</a>
-                <a href="http://zhulongxu.com/about" target="_blank" class="tab-item" title="Contact Us">Contact Us</a>
+            <span style="margin-right: 1vw;">
+                Image|Video Compression|Conversion
             </span>
         </div>
 
@@ -338,7 +331,6 @@
                 <strong>热门搜索：</strong>
                 在线PS、免费修图、证件照换底色、在线抠图、图片编辑器、Photoshop网页版、免费美图工具
             </div>
-
             <p><small>版权所有 © 2024 在线PS编辑器 | 免费使用 | 技术支持</small></p>
         </footer>
         <!-- 英语版本的SEO底部 -->
@@ -355,29 +347,18 @@
         </footer>
 
         <script>
-                // 根据不同语言显示不同页面内容
-                (function () {
-                    const saved = localStorage.getItem('site_lang');
-                    if (saved) {
-                        if (saved == 'zh') {
-                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
-                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
-                        } else {
-                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
-                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
-                        }
-                    } else {
-                        const userLang = navigator.language || navigator.userLanguage;
-                        if (userLang == 'zh') {
-                            // 动态显示快捷内容
-                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
-                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
-                        } else {
-                            document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
-                            document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
-                        }
-                    }
-                })();
+            // 根据不同语言显示不同页面内容
+            (function () {
+                let user_lang = navigator.language || navigator.userLanguage;
+                user_lang = user_lang.toLowerCase();
+                if (user_lang == 'zh-cn') {
+                    document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'block');
+                    document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'none');
+                } else {
+                    document.querySelectorAll('.controle-zh').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.controle-en').forEach(el => el.style.display = 'block');
+                }
+            })();
         </script>
     </body>
 

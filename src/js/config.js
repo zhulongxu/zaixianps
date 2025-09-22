@@ -1,48 +1,14 @@
 //main config file
-const LANG_MAPPING = {
-    'GB': { name: 'English (UK)', code: 'uk' },
-    'US': { name: 'English', code: 'en' },
-    'AE': { name: 'عربي', code: 'ar' },
-    'CN': { name: '简体中文', code: 'zh' },
-    'DE': { name: 'Deutsch', code: 'de' },
-    'NL': { name: 'Dutch', code: 'nl' },
-    'ES': { name: 'Español', code: 'es' },
-    'FR': { name: 'Français', code: 'fr' },
-    'GR': { name: 'Greek', code: 'el' },
-    'IT': { name: 'Italiano', code: 'it' },
-    'JP': { name: '日本語', code: 'ja' },
-    'KR': { name: '한국어', code: 'ko' },
-    'LT': { name: 'Lietuvių', code: 'lt' },
-    'PT': { name: 'Português', code: 'pt' },
-    'RU': { name: 'русский язык', code: 'ru' },
-    'TR': { name: 'Türkçe', code: 'tr' }
-};
+
 var config = {};
 
 config.TRANSPARENCY = false;
 config.TRANSPARENCY_TYPE = 'squares'; //squares, green, grey
-function showLang(lang) {
-    if (lang === 'en') {
-        localStorage.setItem('site_lang', 'en');
-        document.title = "Online PS - Free Photo Editor | Background Remover | ID Photo";
-        config.LANG = lang; 
 
-    } else {
-        localStorage.setItem('site_lang', 'zh');
-        document.title = "在线PS-免费编辑图片|抠图神器|证件照换底色";
-        config.LANG = lang; 
-    }
-}
+let user_lang = navigator.language || navigator.userLanguage;
+user_lang = user_lang.toLowerCase();
 
-const saved = localStorage.getItem('site_lang') ;
-if (saved) {
-    showLang(saved)
-}else {
-    // 当前浏览器使用的语言
-    let user_lang = navigator.language || navigator.userLanguage;
-    user_lang = user_lang.toLowerCase();
-    config.LANG = user_lang; 
-}
+config.LANG = user_lang == 'zh-cn' ? 'zh' : 'en';
 
 
 config.WIDTH = null;

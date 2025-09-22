@@ -20,7 +20,6 @@ class Help_about_class {
 				{title: "Description:", value: "Online image editor."},
 				{title: "Author:", value: 'ZHULONGXU'},
 				{title: "Email:", html: '<a href="mailto:' + email + '">' + email + '</a>'},
-				{title: "WeiXin:", html: '<span style="color:#adecab;">18655760259</span>'},
 			],
 		};
 		this.POP.show(settings);
